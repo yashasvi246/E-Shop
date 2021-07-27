@@ -1,0 +1,91 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'app/css/paytm.css' %}">
+<table class="body-wrap">
+    <tbody><tr>
+        <td></td>
+        <td class="container" width="600">
+            <div class="content">
+                <table class="main" width="100%" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                        <td class="content-wrap aligncenter">
+                            <table width="100%" cellpadding="0" cellspacing="0">
+                                <tbody><tr>
+                                    <td class="content-block">
+                                      <center>  <h2 style="color:Blue">Thanks for Shopping on E-shop</h2></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                        <table class="invoice">
+                                            <tbody><tr>
+                                                <bold><td > {{user}}<br>Invoice  #{{order}}<br>Time {% now "jS F Y H:i" %}</td></bold>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table class="invoice-items" cellpadding="0" cellspacing="0">
+                                                        <tbody><tr>
+    <td style="color:Blue">Order ID</td>
+    <td class="alignright">{{order.order_id}}</td>
+    
+  </tr>
+  <tr>
+    <td style="color:Blue">Amount</td>
+    <td class="alignright">{{order.amount}}</td>
+  </tr>
+  <tr>
+    <td style="color:Blue">Transaction ID</td>
+    <td class="alignright">{{order.txn_id}}</td>
+    
+  </tr>
+  <tr>
+    <td style="color:Blue">Transaction Status</td>
+    <td class="alignright">{{order.status}}</td>
+    
+  </tr>
+  <tr>
+    <td style="color:Blue">Transaction Date</td>
+    <td class="alignright">{{order.txndate}}</td>
+    
+  </tr>
+
+  <tr>
+    <td style="color:Blue">Bank Transaction ID</td>
+    <td class="alignright">{{order.banktxnid}}</td>
+    
+  </tr>
+
+                                                    </tbody></table>
+                                                </td>
+                                            </tr>
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                  <center>      <a href="/">Go to Home</a></center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="content-block">
+                                   <center>     4 Vasant Vihar Colony,Sonkatch ,455118</center>
+                                    </td>
+                                </tr>
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+                <div class="footer">
+                    <table width="100%">
+                        <tbody><tr>
+                            <td class="aligncenter content-block">Questions? Email <a href="mailto:">support@company.inc</a></td>
+                        </tr>
+                    </tbody></table>
+                </div></div>
+        </td>
+        <td></td>
+    </tr>
+</tbody></table>
+
+  
+
+

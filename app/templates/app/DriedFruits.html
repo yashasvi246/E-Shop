@@ -1,0 +1,112 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Dried Fruits & NUTS{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <link rel="stylesheet" href="{% static 'app/css/cat.css' %}">
+            
+             
+                <a href="{% url 'DF' %}" class=" list-group-item-action" aria-current="true"><button type="button" class="btn btn-warning btn-arrow-right">All
+                    Dried Fruits & NUTS</button></a>
+                
+                <a href="{% url 'DFdata' 'below' %}" class=" list-group-item-action" aria-current="true"><button type="button" class="btn btn-info btn-arrow-right">Less
+                    than 500</button></a>
+                <a href="{% url 'DFdata' 'above' %}" class=" list-group-item-action" aria-current="true"><button type="button" class="btn btn-success btn-arrow-right">more
+                    than 500</button></a>
+            </div>
+        </div>
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+                {% for product in DF%}
+                <div class="col-sm-4 text-center mb-4">
+                    <a href="{% url 'product-detail' product.id %}" class="btn">
+                        <div class="item">
+                            <img src="{{product.product_image.url}}" alt="" height="170" class="">
+                            <div class="fw-bold">{{product.title}}</div>
+                             <div class="fw-bold"><i class="fas fa-rupee-sign"></i><large> {{product.discounted_price}}</large>
+                            
+                           <strike> {{product.selling_price}}</strike>
+                                                       {% if product.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif product.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif product.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif product.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif product.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="far fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-heart fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

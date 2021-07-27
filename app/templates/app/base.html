@@ -1,0 +1,251 @@
+<!doctype html>
+<!--Since static files r used i.e. CSS, JS, Images-->
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <!--Owl Carousel CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+  <!--FontAwesome CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+
+
+  <title> E-Shop| {% block title %} {% endblock title %} </title>
+   <link rel = "icon" href = 
+"{% static 'app/images/3.png' %}"
+         width="400" height="800">
+          
+</head>
+
+<body>
+  <nav style="background-color:#0C3C26;" class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container">
+      <a class="navbar-brand" href="/" style="font-size:3vw"><img style="vertical-align:middle,float:left, padding-left: 0em;;" src="{% static 'app/images/6.png' %}" alt="𝔢 𝔰𝔥𝔬𝔭" height="110px" width="150px" > </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Electronics
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+              <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobiles </a></li>
+              <li><a class="dropdown-item" href="{% url 'tablets' %}">Tablets </a></li>
+              <li><a class="dropdown-item" href="{% url 'laptop' %}">Laptops </a></li>
+              <li><a class="dropdown-item" href="{% url 'camera' %}">Cameras </a></li>
+              <li><a class="dropdown-item" href="{% url 'tv' %}">TV's</a></li>
+              <li><a class="dropdown-item" href="{% url 'PC' %}">Desktop PC's</a></li>
+              <li><a class="dropdown-item" href="{% url 'smart' %}">Smart Wearable Tech</a></li>
+              <li><a class="dropdown-item" href="{% url 'health' %}">Health Care Appliances</a></li>
+              <li><a class="dropdown-item" href="{% url 'cp' %}">Computer Peripherals</a></li>
+              
+            </ul>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Baby & Kids
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+              <li><a class="dropdown-item" href="{% url 'KC' %}">Kids Clothing</a></li>
+              <li><a class="dropdown-item" href="{% url 'KF' %}">Kids Footwear</a></li>
+              <li><a class="dropdown-item" href="{% url 'TO' %}">Toys</a></li>
+              <li><a class="dropdown-item" href="{% url 'BC' %}">Baby Care</a></li>
+               <li><a class="dropdown-item" href="{% url 'SS' %}">School Supplies</a></li>
+            </ul>
+          </li>
+
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Fashion
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+              <li><a class="dropdown-item" href="MW">Men's Wear</a></li>
+              <li><a class="dropdown-item" href="WW">Women'sWear</a></li>
+              <li><a class="dropdown-item" href="W">Watches</a></li>
+                <li><a class="dropdown-item" href="G">Goggles</a></li>
+                  <li><a class="dropdown-item" href="HB">Handbags & Clutches</a></li>
+                  <li><a class="dropdown-item" href="S">Shoes & Sandals</a></li>
+            </ul>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Grocery Store
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+              <li><a class="dropdown-item" href="SF">Snack Foods</a></li>
+              <li><a class="dropdown-item" href="TC">Tea , Coffee & Beverages</a></li>
+              <li><a class="dropdown-item" href="SM">Spices & Masalas</a></li>
+                
+                  <li><a class="dropdown-item" href="DF">Dried Fruits & Nuts</a></li>
+                  <li><a class="dropdown-item" href="CM">Cerial & Muesli</a></li>
+            </ul>
+          </li>
+        </ul>
+
+      
+        <form method='get' action="/search" class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search" id='search'>
+          <button class="btn btn-outline-light" type="submit">Search</i></button>
+        </form>
+        
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown mx-1 " >
+              <a class="nav-link dropdown-toggle text-white p-4" href="#" id="profileDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+               Hello {{request.user}} ! <img src="{% static 'app/images/admin.png' %}" width='30' height='30' >
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item mx-0 p-3">
+          <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-primary"></span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="40" height="40"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><defs><linearGradient x1="126.3125" y1="122.76769" x2="126.3125" y2="136.37719" gradientUnits="userSpaceOnUse" id="color-1_yuQyXoSIWetK_gr1"><stop offset="0" stop-color="#ffffff"></stop><stop offset="1" stop-color="#b8b8b8"></stop></linearGradient><linearGradient x1="77.9375" y1="122.76769" x2="77.9375" y2="136.37719" gradientUnits="userSpaceOnUse" id="color-2_yuQyXoSIWetK_gr2"><stop offset="0" stop-color="#ffffff"></stop><stop offset="1" stop-color="#b8b8b8"></stop></linearGradient><linearGradient x1="102.125" y1="31.50556" x2="102.125" y2="139.35225" gradientUnits="userSpaceOnUse" id="color-3_yuQyXoSIWetK_gr3"><stop offset="0" stop-color="#e6e6e6"></stop><stop offset="1" stop-color="#808080"></stop></linearGradient><linearGradient x1="104.8125" y1="31.50556" x2="104.8125" y2="139.35225" gradientUnits="userSpaceOnUse" id="color-4_yuQyXoSIWetK_gr4"><stop offset="0" stop-color="#e6e6e6"></stop><stop offset="1" stop-color="#808080"></stop></linearGradient><linearGradient x1="86" y1="31.50556" x2="86" y2="139.35225" gradientUnits="userSpaceOnUse" id="color-5_yuQyXoSIWetK_gr5"><stop offset="0" stop-color="#e6e6e6"></stop><stop offset="1" stop-color="#808080"></stop></linearGradient></defs><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g id="Layer_2"><path d="M137.0625,131.6875c0,5.9125 -4.8375,10.75 -10.75,10.75c-5.9125,0 -10.75,-4.8375 -10.75,-10.75c0,-5.9125 4.8375,-10.75 10.75,-10.75c5.9125,0 10.75,4.8375 10.75,10.75z" fill="url(#color-1_yuQyXoSIWetK_gr1)"></path><path d="M88.6875,131.6875c0,5.9125 -4.8375,10.75 -10.75,10.75c-5.9125,0 -10.75,-4.8375 -10.75,-10.75c0,-5.9125 4.8375,-10.75 10.75,-10.75c5.9125,0 10.75,4.8375 10.75,10.75z" fill="url(#color-2_yuQyXoSIWetK_gr2)"></path><path d="M126.3125,118.25c-6.45,0 -11.825,4.56875 -13.16875,10.75h-22.0375c-1.34375,-6.18125 -6.71875,-10.75 -13.16875,-10.75c-7.525,0 -13.4375,5.9125 -13.4375,13.4375c0,7.525 5.9125,13.4375 13.4375,13.4375c6.45,0 11.825,-4.56875 13.16875,-10.75h22.0375c1.34375,6.18125 6.71875,10.75 13.16875,10.75c7.525,0 13.4375,-5.9125 13.4375,-13.4375c0,-7.525 -5.9125,-13.4375 -13.4375,-13.4375zM77.9375,139.75c-4.56875,0 -8.0625,-3.49375 -8.0625,-8.0625c0,-4.56875 3.49375,-8.0625 8.0625,-8.0625c4.56875,0 8.0625,3.49375 8.0625,8.0625c0,4.56875 -3.49375,8.0625 -8.0625,8.0625zM126.3125,139.75c-4.56875,0 -8.0625,-3.49375 -8.0625,-8.0625c0,-4.56875 3.49375,-8.0625 8.0625,-8.0625c4.56875,0 8.0625,3.49375 8.0625,8.0625c0,4.56875 -3.49375,8.0625 -8.0625,8.0625z" fill="url(#color-3_yuQyXoSIWetK_gr3)"></path><rect x="30" y="33" transform="scale(2.6875,2.6875)" width="18" height="2" fill="url(#color-4_yuQyXoSIWetK_gr4)"></rect><path d="M147.8125,51.0625h-16.93125c0.5375,-1.88125 0.80625,-4.03125 0.80625,-6.18125c0,-8.33125 -6.71875,-15.31875 -14.78125,-15.31875c-4.8375,0 -9.40625,2.6875 -12.09375,6.45c-2.6875,-3.7625 -7.25625,-6.45 -12.09375,-6.45c-8.0625,0 -14.78125,6.71875 -14.78125,15.31875c0,2.15 0.26875,4.3 0.80625,6.18125h-20.15625l-4.03125,-18.00625c-0.80625,-3.49375 -4.03125,-6.18125 -7.79375,-6.18125h-22.575c-4.56875,0 -8.0625,3.49375 -8.0625,8.0625c0,4.56875 3.49375,8.0625 8.0625,8.0625h10.75c4.56875,0 8.0625,-3.49375 8.0625,-8.0625v-2.6875h3.7625c1.34375,0 2.41875,0.80625 2.6875,2.15l13.4375,59.93125c1.34375,6.18125 6.71875,10.48125 13.16875,10.48125h58.31875c5.9125,0 11.2875,-4.03125 12.9,-9.675l8.0625,-28.4875c0.26875,-1.075 0.5375,-2.41875 0.5375,-3.7625v-3.7625c0,-4.56875 -3.49375,-8.0625 -8.0625,-8.0625zM37.625,34.9375c0,1.6125 -1.075,2.6875 -2.6875,2.6875h-10.75c-1.6125,0 -2.6875,-1.075 -2.6875,-2.6875c0,-1.6125 1.075,-2.6875 2.6875,-2.6875h13.4375zM92.71875,34.9375c4.56875,0 8.6,3.49375 9.40625,8.33125l0.26875,2.41875h4.8375l0.26875,-2.41875c0.5375,-4.8375 4.56875,-8.33125 9.40625,-8.33125c5.10625,0 9.40625,4.3 9.40625,9.94375c0,15.31875 -16.93125,25.2625 -21.5,27.4125c-4.56875,-2.41875 -21.5,-12.09375 -21.5,-27.4125c0,-5.64375 4.3,-9.94375 9.40625,-9.94375zM150.5,62.8875c0,0.80625 0,1.6125 -0.26875,2.15l-8.0625,28.4875c-1.075,3.49375 -4.3,5.9125 -7.79375,5.9125h-58.5875c-3.7625,0 -6.9875,-2.6875 -7.79375,-6.18125l-8.0625,-36.81875h20.69375c6.45,13.70625 22.30625,20.9625 23.1125,21.23125l1.075,0.5375l1.075,-0.5375c0.80625,-0.26875 16.6625,-7.525 23.1125,-21.23125h18.8125c1.6125,0 2.6875,1.075 2.6875,2.6875z" fill="url(#color-5_yuQyXoSIWetK_gr5)"></path></g></g></svg>&nbsp{{totalitem}}</a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-2">
+              <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- Banner Slider on home Page-->
+  {% block banner_slider %} {% endblock banner_slider %}
+  <!-- Live Sale on home Page-->
+  {% block livesale %} {% endblock livesale %}
+  <!-- Main Content-->
+  {% block main-content %} {% endblock main-content %}
+  {% block payment-gateway %} {% endblock payment-gateway %}
+
+
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+
+  <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'app/js/all.min.js' %}"></script>
+  <script src="{% static 'app/js/myscript.js' %}"></script>
+
+  <link rel="stylesheet" href="{% static 'app/css/footer.css' %}">
+<footer style="background-color:#0C3C26;" class="footer ">
+    <div class="container  ">
+        <div class="row ">
+            <div class="col-md-5">
+                <h1>E-shop</h1>
+                <div class="row">
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                          <b>  <li><a href="{% url 'tablets' %}">Tablets </a></li>
+              <li><a href="{% url 'laptop' %}">Laptops </a></li>
+              <li><a  href="{% url 'camera' %}">Cameras </a></li>
+              <li><a  href="{% url 'tv' %}">TV's</a></li>
+              <li><a href="{% url 'PC' %}">Desktop PC's</a></li>
+              <li><a  href="{% url 'smart' %}">Smart Wearable Tech</a></li>
+              <li><a  href="{% url 'health' %}">Health Care Appliances</a></li>
+              <li><a  href="{% url 'cp' %}">Computer Peripherals</a></li></b>
+                        </ul>
+                    </div>
+                    
+              
+                    <div class="col-6">
+                        <ul class="list-unstyled">
+                         <b>  <li><a  href="{% url 'KC' %}">Kids Clothing</a></li>
+              <li><a href="{% url 'KF' %}">Kids Footwear</a></li>
+              <li><a href="{% url 'TO' %}">Toys</a></li>
+              <li><a  href="{% url 'BC' %}">Baby Care</a></li>
+               <li><a  href="{% url 'SS' %}">School Supplies</a></li></b>
+                        </ul>
+                    </div>
+
+    
+                </div>
+                <ul class="nav">
+                    <li class="nav-item"><a href="" class="nav-link pl-0"><i class='fab fa-facebook fa-spin fa-3x'></i></i></a></li>
+                    <li class="nav-item"><a href="" class="nav-link"><i class='fab fa-twitter fa-spin fa-3x'></i></a></li>
+                    <li class="nav-item"><a href="https://github.com/yashasvi246" class="nav-link"><i class='fab fa-github fa-spin fa-3x'></i></a></li>
+                    <li class="nav-item"><a href="" class="nav-link"><i class='fab fa-instagram-square fa-spin fa-3x'></i>
+</a></li>
+                </ul>
+                <br>
+            </div>
+            <div class="col-md-2">
+                <h3 class="text-md-right">Feedback us <i class="far fa-laugh-wink fa-spin fa-1x"></i></h3>
+                
+            </div>
+            <div class="col-md-5">
+                <form>
+                    <fieldset class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </fieldset>
+                    <fieldset class="form-group"><br>
+                        <textarea class="form-control" id="exampleMessage" placeholder="Message" ></textarea>
+                    </fieldset>
+                    <fieldset class="form-group text-xs-right">
+                    <br>
+                        <button type="button" class="btn btn-light"><b>Send<b></button>
+                    </fieldset>
+                </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+
+                © 2020 Copyright:
+    <a class="text-white" href="https://www.crystaltechservices.com/">www.crystaltechservices.com</a>
+    
+            </div>
+         
+  
+        
+  </div>
+    </div>
+   
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Oswald:400,500,600,700');
+.owl-carousel .item{
+ /* border: 1px solid black; */
+ font-size: 2px;
+ text-align: center;
+ margin-top: 2px;;
+}
+
+.owl-next{
+ float:right;
+}
+.owl-prev{
+ float:left;
+}
+.owl-prev span{
+ font-size: 20px;
+ font-weight: bold;
+}
+.owl-next span{
+ font-size: 24px;
+ font-weight: bold;
+}
+
+
+.notify-badge{
+    position: absolute;
+    right:-10px;
+    top:10px;
+    background:#1d8b5a;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color:rgb(8, 8, 8);
+    padding:5px 10px;
+    font-size:20px;
+}
+

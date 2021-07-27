@@ -1,0 +1,148 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+
+{% block main-content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h4>Order Summary</h4>
+      <hr>
+      {% for cart in cart_items %}
+     <div class="row">
+            <a href="{% url 'product-detail' cart.product.id %}" class="btn">
+            <div class="col-sm-3 text-center align-self-center"><img src="{{ cart.product.product_image.url }}" alt=""
+                srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </a></div>
+            <div class="col-sm-9">
+              <div>
+                <h5>{{cart.product.title}}</h5>
+                <p class="mb-2 text-muted small">{{cart.product.description}}</p>
+                <div class="my-3">
+                  <label for="quantity">Quantity: {{cart.quantity}}</label>
+
+                </div>
+                <div class="d-flex justify-content-between">
+                 
+                  <p class="mb-0"><span><strong>Rs. {{cart.product.discounted_price}}</strong></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          {% endfor %}
+      {% if amount < 500 %}
+      <p class="fw-bold">{{amount}} + Rs. 70.00 = {{totalamount}} </p>
+       {% else %}
+       <p class="fw-bold">{{amount}}+ <class style="color:green;"> Shipping Charge FREE = <class style="color:black;">{{totalamount}} </p>
+        {%endif%}
+      <small><h3>Proceed to Checkout</h3>
+<p>After you've reviewed the items in your Shopping Cart, you're ready to proceed to checkout and complete your order.</p>
+
+<h3>To proceed to checkout:</h3>
+<p>Click Proceed to Checkout after you've reviewed the items in your Shopping Cart.</p>
+Sign in to your account or create a new account if this is your first order.<br>
+Enter a shipping address, choose a shipping method, and enter your payment information.<br>
+<strong>Note: If there is more than one item in your order, you will be given the option to group your items into as few shipments as possible or ship items as they become available (at an additional cost).</strong><br><br>
+
+<h3>Review your order details.</h3>
+Click Place Your Order and Pay..
+From your Bank's 3-D secure gateway, enter your 3-D secure code to authorise your payment. <br><br><strong>You'll see a Thank You page if your order is successfully placed.</strong></small>
+    </div>
+
+    <div class="col-sm-4 offset-sm-1">
+      <h4>Select Shipping Address</h4>
+      <hr>
+      <form action="/paymentdone" id="myform">
+        {% for ad in add %}
+        <div class="card">
+          <div class="card-body">
+            <h5>{{ad.name}}</h5>
+            <p>{{ad.locality}}, {{ad.city}}, {{ad.state}}, {{ad.zipcode}}</p>
+          </div>
+        </div>
+        <div class="form-check mt-2 mb-5">
+          <input class="form-check-input" type="radio" name="custid" id="custadd{{forloop.counter}}" value="{{ad.id}}">
+          <label class="form-check-label fw-bold" for="">
+            Address: {{forloop.counter}} </label>
+        </div>
+        {% endfor %}
+        <a href="{% url 'address'%}" class="btn btn-sm btn-primary mr-5">Add New Address </a><br><br>
+        
+        
+        <div class="text-end">
+          <!-- Set up a container element for the button -->
+          <div id="paypal-button-container"></div>
+          <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button> -->
+        </div>
+        
+      </form>
+      <form action="/paytm/" method="post">
+    {% csrf_token %}
+<input style ="display:none" type="text" name="ORDER_ID" placeholder={{transaction_id}} value={{transaction_id}}>
+<input style ="display:none"type="number" name="TXN_AMOUNT" placeholder="TXN_AMOUNT" value={{totalamount}}>
+<input style ="display:none" type="text" name="CUST_ID" placeholder="CUST_ID" value="erankitgate@gmail.com">
+<button  style="width:100% "type="submit"><img src="{% static 'app/images/paytmlogo.png' %}" class="center" class="d-block w-45 " alt="Paytm" height="45" ></button>
+</form>
+<br>
+<form action="/paytm/status/" method="post">
+{% csrf_token %}
+<input style ="display:none" type="text" name="ORDER_ID" placeholder="ORDER ID" value="1234">
+
+<input style ="display:none" type="text" name="AMOUNT" placeholder="ORDER ID" value="200">
+
+
+<button type="submit" class="btn btn-sm btn-secondary mr-3">Check Paytm Payment Status</button>
+</form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock main-content %}
+
+{% block payment-gateway %}
+<!-- Include the PayPal JavaScript SDK -->
+ 
+<script src="https://www.paypal.com/sdk/js?client-id=AQ5hqgwWqgNjGEBsOu3QZ9lYODYzC51miTVix1kZaprTQ5qfsmkJJdmAjgUbca_spPq_eVjHcEvOo9C4&currency=USD"></script>
+
+<script>
+  // Render the PayPal button into #paypal-button-container
+  paypal.Buttons({
+
+    // Set up the transaction
+    createOrder: function (data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '{{totalamount}}'
+          }
+        }]
+      });
+    },
+
+    // Finalize the transaction
+    onApprove: function (data, actions) {
+      return actions.order.capture().then(function (details) {
+        // Show a success message to the buyer
+        alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        document.getElementById("myform").submit();
+      });
+    }
+
+
+  }).render('#paypal-button-container');
+
+  
+</script>
+
+
+
+       
+
+
+
+
+
+
+
+{% endblock payment-gateway %}

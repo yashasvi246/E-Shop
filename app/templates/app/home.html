@@ -1,0 +1,1145 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+
+{% block banner_slider %}
+<!--Banner Slider-->
+<link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'app/css/cat.css' %}">
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'app/images/banner/g1.jpeg' %}" class="d-block w-100" alt="Girl in a Jacket." height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/i.png' %}" class="d-block w-100" alt=".height: auto" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/w1.jpeg' %}" class="d-block w-100" alt="height: auto" height="500">
+    </div>
+        <div class="carousel-item">
+      <img src="{% static 'app/images/banner/m1.jpeg' %}" class="d-block w-100" alt="height: auto" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'app/images/banner/k.jpg' %}" class="d-block w-100" alt="height: auto" height="500">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+<!-- End Banner Slider -->
+{% endblock banner_slider %}
+
+{% block livesale %}
+<!-- Live Sale Section -->
+<div style="background-color:#0C3C26 " class="container " >
+  <div style="height: 150px " class=" row text-center p-2 text-white border-bottom shadow " >
+    <marquee><h2><img src="{% static 'app/images/banner/c3.png' %}" height="50"></img>SALE IS LIVE NOW <img src="{% static 'app/images/banner/c3.png' %}" height="60"></img></h2></marquee>
+    <span><h5>5% Instant Discount on HDFC Bank Credit and Debit Card</h5></span>
+    <small class="fw-lighter">Term and Condition Applied (For details visit Bank's official Website)</small>
+  </div>
+  
+</div>
+<!-- End Live Sale Section -->
+{% endblock livesale %}
+
+{% block main-content %}
+<!-- 1st Product Slider -->
+<div class="m-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary btn-arrow-right">KIDS CLOTHING</button></a>
+  <!-- Slider 1 -->
+  <div class="owl-carousel" id="slider1">
+    {% for b in KC %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+   {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge ">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span>
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+            
+             {% if b.ratings == 0 %}
+
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<!-- End 1st Product Slider -->
+
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+   <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Women's Wear</button></a>
+  <!-- Slider 2 -->
+  <div class="owl-carousel" id="slider2">
+    {% for b in WW %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+      {% if b.offer %}
+      <span style="background:GRAY;"  class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+          {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+</a>
+    
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Men's Wear</button></a>
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in MW%}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+     {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+       {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+<button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Baby Care</button></a>
+  <!-- Slider 4 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in BabyCare%}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+
+      
+      
+     {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"> 
+         
+      
+      
+      <span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+         
+       {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Mobiles</button></a>
+  <!-- Slider 5 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in Mobile%}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+      {% if b.offer %}
+      <span style="background:GRAY;"  class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+       {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary btn-arrow-right">Tablets</button></a>
+  <!-- Slider 6 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in tablet %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+    {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+       {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Desktop & PC</button></a>
+  <!-- Slider 9 -->
+  <div class="owl-carousel" id="slider3">
+    {% for w in PC %}
+    <a href="{% url 'product-detail' w.id %}" class="btn">
+      {% if w.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{w.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{w.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{w.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{w.discounted_price}}</b></span></div>
+    {% if w.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif w.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif w.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Laptops</button></a>
+  <!-- Slider 7 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in laptop %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+     {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+    {% if w.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif w.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif w.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+ <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Toys & Game Store</button></a>
+  <!-- Slider 8 -->
+  <div class="owl-carousel" id="slider3">
+    {% for b in toys %}
+    <a href="{% url 'product-detail' b.id %}" class="btn">
+     {% if b.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{b.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{b.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{b.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{b.discounted_price}}</b></span></div>
+      {% if b.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif b.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif b.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif b.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+ <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Watches</button></a>
+  <!-- Slider 9 -->
+  <div class="owl-carousel" id="slider3">
+    {% for w in W %}
+    <a href="{% url 'product-detail' w.id %}" class="btn">
+      {% if w.offer %}
+      <span style="background:gray;" class="notify-badge">{{w.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{w.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{w.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{w.discounted_price}}</b></span></div>
+       {% if w.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif w.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif w.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+<div class="mx-3">
+  <button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Dried Fruits & Nuts</button></a>
+  <!-- Slider 9 -->
+  <div class="owl-carousel" id="slider3">
+    {% for w in DF %}
+    <a href="{% url 'product-detail' w.id %}" class="btn">
+     {% if w.offer %}
+      <span style="background:gray;" class="notify-badge">{{w.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{w.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{w.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{w.discounted_price}}</b></span></div>
+  {% if w.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif w.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif w.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="mx-3">
+<button type="button" style="background-color:#1d8b5a;"class="btn btn-secondary  btn-arrow-right">Hand Bags & Clutches</button></a>
+
+  <!-- Slider 9 -->
+  <div class="owl-carousel" id="slider3">
+    {% for w in HB %}
+    <a href="{% url 'product-detail' w.id %}" class="btn">
+      {% if w.offer %}
+      <span style="background:GRAY;" class="notify-badge">{{w.offer_value}} % OFF</span> 
+   {%endif%}
+      <div class="item"><img src="{{w.product_image.url}}" alt="" height="200px"><span
+          class="fw-bold">{{w.title}}</span><br><span class="fs-5"><i class="fas fa-rupee-sign"></i> <b>{{w.discounted_price}}</b></span></div>
+    {% if w.ratings == 0 %}
+
+  <ul class="rating">
+   
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+ {% elif w.ratings == 1  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+  {% elif w.ratings == 2  %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 3 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+ {% elif w.ratings == 4 %}
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="far fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+
+{%else%}
+
+
+ <ul class="rating">
+   
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+    <i class="fas fa-star fa-sm text-danger fa-1x"></i>
+
+ </ul>
+{%endif%}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- End 3nd Product Slider -->
+<!-- Payment Info Section -->
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'app/images/payavail/cc.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'app/images/payavail/upi.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'app/images/payavail/nb.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <img src="{% static 'app/images/payavail/bj.jpg' %}" alt="" srcset="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Payment Info Section -->
+    
+
+
+<!-- For Adding more no of sliders add js to myscript.js-->
+{% endblock main-content %}
